@@ -1,3 +1,3 @@
 export default function TempError({ children }) {
-    return <div className="error">{children}</div>;
+    return <div className="error">{children} 🔴</div>;
 }

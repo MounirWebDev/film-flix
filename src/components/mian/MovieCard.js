@@ -1,10 +1,31 @@
-export default function MovieCard({ movie }) {
+export default function MovieCard({
+    movie,
+    selectedMovieId,
+    onSelectedMovieId,
+}) {
     return (
-        <div className="movie-card">
-            <img src={movie.Poster} alt={movie.Title} className="movie-image" />
-            <div className="movie-details">
+        <div
+            className={`movie-card ${
+                selectedMovieId === movie.imdbID ? 'selected' : ''
+            }`}
+            onClick={onSelectedMovieId}
+        >
+            <img
+                src={movie.Poster}
+                alt={movie.Title}
+                className={`movie-image ${
+                    selectedMovieId === movie.imdbID ? 'selected' : ''
+                }`}
+            />
+            <div
+                className={`movie-details ${
+                    selectedMovieId === movie.imdbID ? 'selected' : ''
+                }`}
+            >
                 <h2 className="movie-title">{movie.Title}</h2>
-                <p>{movie.Year}</p>
+                <p>
+                    <span>📅</span> {movie.Year}
+                </p>
             </div>
         </div>
     );
