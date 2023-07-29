@@ -27,3 +27,13 @@
 .search-bar:focus {
     outline: none; /* Remove focus outline */
 }
+
+@media screen and (max-width: 849px) {
+    .navbar {
+        padding: 10px;
+    }
+
+    .navbar-logo {
+        font-size: 20px;
+    }
+}

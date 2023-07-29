@@ -13,9 +13,11 @@ body {
 body,
 #root {
     min-height: 100vh;
+    overflow: hidden;
 }
 
-.open {
+.open-btn,
+.close-btn {
     display: none;
 }
 
@@ -24,13 +26,14 @@ body,
         position: absolute;
         right: -100%;
         z-index: 5;
+        transition: right 0.3s;
     }
 
-    .open-btn {
+    .open-btn,
+    .close-btn {
         padding: 5px;
         font-size: 20px;
         background-color: #fff;
-        border-radius: 50% 5px 50% 50%;
         border: 1px solid #333333;
         display: flex;
         justify-content: center;
@@ -39,9 +42,15 @@ body,
         cursor: pointer;
     }
 
-    .open{
-      top: 75px;
-      right: 10px;
+    .open-btn{
+        border-radius: 50% 5px 50% 50%;
+        top: 75px;
+        right: 10px;
+    }
+
+    .close-btn {
+        border-radius: 5px 50% 50% 50%;
+        top: 0;
+        left: 0px;
     }
 }
-

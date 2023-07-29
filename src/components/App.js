@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import NavBar from './navBar/NavBar';
 import Main from './mian/Main';
 import Box from './mian/Box';
@@ -11,7 +11,7 @@ import WatchingMoviesList from './mian/WatchedMovieList';
 const key = '537f7a50';
 
 function App() {
-    // useStates Hooks
+    // useStates, useRefs Hooks
     const [search, setSearch] = useState('');
     const [movies, setMovies] = useState([]);
     const [selectedMovieId, setSelectedMovieId] = useState(null);
@@ -23,6 +23,9 @@ function App() {
     });
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState('');
+    const buttonEl1 = useRef(null);
+    const buttonEl2 = useRef(null);
+    const boxEl = useRef(null);
 
     // Handle Functions
     function handleDeleteWatchedMovies(id) {
@@ -77,6 +80,21 @@ function App() {
         localStorage.setItem('watchedMovies', JSON.stringify(watchedMovies));
     }, [watchedMovies]);
 
+    useEffect(() => {
+        buttonEl1.current.addEventListener('click', callback);
+
+        function callback() {
+            boxEl.current.style.right = 0;
+        }
+    });
+    useEffect(() => {
+        buttonEl2.current.addEventListener('click', callback);
+
+        function callback() {
+            boxEl.current.style.right = '-100%';
+        }
+    });
+
     return (
         <>
             <NavBar search={search} setSearch={setSearch} />
@@ -114,7 +132,10 @@ function App() {
                     </section>
                 </Box>
 
-                <Box>
+                <section className="box-container" ref={boxEl}>
+                    <button className="close-btn" ref={buttonEl2}>
+                        <i className="ri-arrow-right-fill"></i>
+                    </button>
                     {selectedMovieId ? (
                         <MovieDetails
                             selectedMovieId={selectedMovieId}
@@ -128,10 +149,10 @@ function App() {
                             onDeleteWatchedMovies={handleDeleteWatchedMovies}
                         />
                     )}
-                </Box>
+                </section>
             </Main>
-            <button className="open-btn open">
-                <i class="ri-arrow-left-fill"></i>
+            <button className="open-btn open" ref={buttonEl1}>
+                <i className="ri-arrow-left-fill"></i>
             </button>
         </>
     );
