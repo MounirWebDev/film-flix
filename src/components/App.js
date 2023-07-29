@@ -15,12 +15,21 @@ function App() {
     const [search, setSearch] = useState('');
     const [movies, setMovies] = useState([]);
     const [selectedMovieId, setSelectedMovieId] = useState(null);
-    const [watchedMovies, setWatchedMovies] = useState([]);
+    const [watchedMovies, setWatchedMovies] = useState(() => {
+        const sotredWatchedMovie =
+            localStorage.getItem('watchedMovies') ?? '[]';
+
+        return JSON.parse(sotredWatchedMovie);
+    });
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState('');
 
     // Handle Functions
-
+    function handleDeleteWatchedMovies(id) {
+        setWatchedMovies(
+            watchedMovies.filter((currEl) => currEl.imdbID !== id)
+        );
+    }
     // useEffects Hooks
     // fetching movies from the search
     useEffect(() => {
@@ -63,12 +72,27 @@ function App() {
         return () => abortController.abort();
     }, [search]);
 
+    // local storage
+    useEffect(() => {
+        localStorage.setItem('watchedMovies', JSON.stringify(watchedMovies));
+    }, [watchedMovies]);
+
     return (
         <>
             <NavBar search={search} setSearch={setSearch} />
             <Main>
                 <Box>
                     <section className="fetching-movie-box">
+                        <h2
+                            style={{
+                                textAlign: 'center',
+                                marginBottom: '20px',
+                                textTransform: 'uppercase',
+                            }}
+                        >
+                            {' '}
+                            searched movies{' '}
+                        </h2>
                         {isLoading && <Loaded />}
                         {!error &&
                             !isLoading &&
@@ -99,10 +123,16 @@ function App() {
                             watchedMoives={watchedMovies}
                         />
                     ) : (
-                        <WatchingMoviesList watchedMovies={watchedMovies} />
+                        <WatchingMoviesList
+                            watchedMovies={watchedMovies}
+                            onDeleteWatchedMovies={handleDeleteWatchedMovies}
+                        />
                     )}
                 </Box>
             </Main>
+            <button className="open-btn open">
+                <i class="ri-arrow-left-fill"></i>
+            </button>
         </>
     );
 }

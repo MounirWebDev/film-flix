@@ -5,16 +5,43 @@
 }
 
 body {
-  background-color: #f8f8f8; 
-  color: #333333; 
-  font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    color: #333333;
+    font-family: Arial, sans-serif;
 }
 
-body, #root {
-  min-height: 100vh;
+body,
+#root {
+    min-height: 100vh;
 }
 
-/* #root {
-  display: flex;
-  align-items: center;
-} */
+.open {
+    display: none;
+}
+
+@media screen and (max-width: 849px) {
+    .box-container:last-child {
+        position: absolute;
+        right: -100%;
+        z-index: 5;
+    }
+
+    .open-btn {
+        padding: 5px;
+        font-size: 20px;
+        background-color: #fff;
+        border-radius: 50% 5px 50% 50%;
+        border: 1px solid #333333;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        cursor: pointer;
+    }
+
+    .open{
+      top: 75px;
+      right: 10px;
+    }
+}
+
