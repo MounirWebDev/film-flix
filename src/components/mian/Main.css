@@ -136,6 +136,7 @@
 .watching-movies-list .movie-ratings {
     display: flex;
     align-items: center;
+    gap: 10px;
 }
 
 .watching-movies-list .movie-rating-label {
@@ -146,6 +147,26 @@
     margin-top: 10px;
     font-size: 14px;
     color: #666666; /* Gray */
+}
+
+.watching-movies-list .delete-movie-btn{
+    font-size: 25px;
+    color: red;
+    cursor: pointer;
+}
+
+.added-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1.8;
+    padding: 10px;
+    background-color: #d2f5e3; /* Light Green */
+    color: #2ecc71; /* Green */
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
 }
 
 .movie-detail-box {
@@ -161,7 +182,7 @@
 
 .movie-detail-box .movie-image {
     width: 200px;
-    height: 300px;
+    height: auto;
     object-fit: cover;
     border-radius: 5px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
@@ -201,8 +222,8 @@
 
 .movie-detail-box .movie-user-rating {
     display: flex;
+    justify-content: center;
     align-items: center;
-    margin-top: 20px;
 }
 
 .movie-detail-box .movie-rating-label {

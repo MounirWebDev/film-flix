@@ -12,7 +12,7 @@ export default function MovieDetails({
 }) {
     // useStates Hooks
     const [movieDetails, setMovieDetails] = useState({});
-    const [userRating, setUserRating] = useState(0);
+    const [userRating, setUserRating] = useState(0)
     const [isLoading, setIsLoading] = useState(false);
 
     // Normal Variables
@@ -42,6 +42,7 @@ export default function MovieDetails({
             image,
             imdbRating,
             runtime,
+            userRating
         };
 
         onWatchedMovies((pre) => [...pre, newWatchedMoive]);
@@ -156,15 +157,21 @@ export default function MovieDetails({
                     </div>
                     <div
                         style={{
-                            background: '#f8f8f8',
+                            marginTop: '10px',
+                            background: '#333',
                             padding: '.75rem',
                             borderRadius: '5px',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: '10px',
+                            justifyContent: 'center',
+                            alignItems: 'center'
                         }}
                     >
                         {isWatched ? (
-                            <p>
-                                You have already added this movie to your list
-                                check it out!
+                            <p className="added-message">
+                                You have already added this movie to your list.
+                                Check it out!
                             </p>
                         ) : !isWatched && userRating ? (
                             <>

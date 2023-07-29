@@ -17,7 +17,7 @@ export default function UserRating({ userRating, setUserRating }) {
                     onTempUserRating={setTempUserRating}
                 />
             ))}
-            <span className="movie-ratin-number">
+            <span className="movie-ratin-number" style={{ color: '#FCD53F' }}>
                 {tempUserRating || userRating}
             </span>
         </div>
