@@ -50,7 +50,7 @@ function App() {
 
                 const response = await fetch(
                     `http://www.omdbapi.com/?apikey=${key}&s=${search}`,
-                    { signal: abortController.signal }
+                    { signal: abortController.signal, referrerPolicy: 'unsafe-url' }
                 );
                 if (!response.ok)
                     throw new Error('Network response was not ok');
