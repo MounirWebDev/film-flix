@@ -1,6 +1,6 @@
 .navbar {
     background-color: #6c5ce7; /* Violet */
-    color: #ffffff; /* White */
+    color: red; /* White */
     padding: 16px;
     display: flex;
     justify-content: space-between;
