@@ -133,6 +133,7 @@
 .watching-movies-list .movie-ratings {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
 }
 
@@ -225,6 +226,19 @@
 
 .movie-detail-box .movie-rating-label {
     margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.movie-detail-box .movie-rating-label svg{
+    width: 22px;
+    height: 22px;
+}
+
+.movie-detail-box .movie-rating-number{
+    font-size: 16px;
+    line-height: 1.8;
 }
 
 .add-to-list-button {

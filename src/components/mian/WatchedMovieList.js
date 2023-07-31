@@ -9,12 +9,11 @@ export default function WatchingMoviesList({
             <h2
                 style={{
                     textAlign: 'center',
-                    marginBottom: '20px',
+                    marginBottom: '15px',
                     textTransform: 'uppercase',
                 }}
             >
-                {' '}
-                favorite movies{' '}
+                favorite movies
             </h2>
             {watchedMovies.map((currEl) => (
                 <WatchingMovie
@@ -51,7 +50,9 @@ function WatchingMovie({ movie, onDeleteWatchedMovies }) {
                 </div>
                 <div className="movie-runtime">{movie.runtime}</div>
             </div>
-            <span className="delete-movie-btn" onClick={onDeleteWatchedMovies}>&times;</span>
+            <span className="delete-movie-btn" onClick={onDeleteWatchedMovies}>
+                &times;
+            </span>
         </div>
     );
 }

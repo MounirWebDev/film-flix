@@ -12,7 +12,7 @@ export default function MovieDetails({
 }) {
     // useStates Hooks
     const [movieDetails, setMovieDetails] = useState({});
-    const [userRating, setUserRating] = useState(0)
+    const [userRating, setUserRating] = useState(0);
     const [isLoading, setIsLoading] = useState(false);
 
     // Normal Variables
@@ -42,7 +42,7 @@ export default function MovieDetails({
             image,
             imdbRating,
             runtime,
-            userRating
+            userRating,
         };
 
         onWatchedMovies((pre) => [...pre, newWatchedMoive]);
@@ -66,6 +66,15 @@ export default function MovieDetails({
 
     return (
         <section className="movie-detail-box">
+            <h2
+                style={{
+                    textAlign: 'center',
+                    marginBottom: '15px',
+                    textTransform: 'uppercase',
+                }}
+            >
+                movie details
+            </h2>
             {isLoading ? (
                 <Loaded />
             ) : (
@@ -165,7 +174,7 @@ export default function MovieDetails({
                             flexDirection: 'column',
                             gap: '10px',
                             justifyContent: 'center',
-                            alignItems: 'center'
+                            alignItems: 'center',
                         }}
                     >
                         {isWatched ? (

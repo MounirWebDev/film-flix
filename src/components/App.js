@@ -50,7 +50,10 @@ function App() {
 
                 const response = await fetch(
                     `http://www.omdbapi.com/?apikey=${key}&s=${search}`,
-                    { signal: abortController.signal, referrerPolicy: 'unsafe-url' }
+                    {
+                        signal: abortController.signal,
+                        referrerPolicy: 'unsafe-url',
+                    }
                 );
                 if (!response.ok)
                     throw new Error('Network response was not ok');
@@ -104,12 +107,11 @@ function App() {
                         <h2
                             style={{
                                 textAlign: 'center',
-                                marginBottom: '20px',
+                                marginBottom: '15px',
                                 textTransform: 'uppercase',
                             }}
                         >
-                            {' '}
-                            searched movies{' '}
+                            searched movies
                         </h2>
                         {isLoading && <Loaded />}
                         {!error &&
@@ -126,6 +128,7 @@ function App() {
                                         )
                                     }
                                     selectedMovieId={selectedMovieId}
+                                    boxEl = {boxEl}
                                 />
                             ))}
                         {error && <TempError> {error} </TempError>}
@@ -137,17 +140,41 @@ function App() {
                         <i className="ri-arrow-right-fill"></i>
                     </button>
                     {selectedMovieId ? (
-                        <MovieDetails
-                            selectedMovieId={selectedMovieId}
-                            onSelectedMovieId={setSelectedMovieId}
-                            onWatchedMovies={setWatchedMovies}
-                            watchedMoives={watchedMovies}
-                        />
+                        <>
+                            {/* <h2
+                                style={{
+                                    textAlign: 'center',
+                                    margin: '15px 0 ',
+                                    textTransform: 'uppercase',
+                                }}
+                            >
+                                movie details
+                            </h2> */}
+                            <MovieDetails
+                                selectedMovieId={selectedMovieId}
+                                onSelectedMovieId={setSelectedMovieId}
+                                onWatchedMovies={setWatchedMovies}
+                                watchedMoives={watchedMovies}
+                            />
+                        </>
                     ) : (
-                        <WatchingMoviesList
-                            watchedMovies={watchedMovies}
-                            onDeleteWatchedMovies={handleDeleteWatchedMovies}
-                        />
+                        <>
+                            {/* <h2
+                                style={{
+                                    textAlign: 'center',
+                                    margin: '15px 0 ',
+                                    textTransform: 'uppercase',
+                                }}
+                            >
+                                favorite movies
+                            </h2> */}
+                            <WatchingMoviesList
+                                watchedMovies={watchedMovies}
+                                onDeleteWatchedMovies={
+                                    handleDeleteWatchedMovies
+                                }
+                            />
+                        </>
                     )}
                 </section>
             </Main>

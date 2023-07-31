@@ -13,7 +13,7 @@ body {
 body,
 #root {
     min-height: 100vh;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 .open-btn,
@@ -52,5 +52,10 @@ body,
         border-radius: 5px 50% 50% 50%;
         top: 0;
         left: 0px;
+    }
+
+    .movie-detail-box .movie-rating-label{
+        width: 15px;
+        height: 15px;
     }
 }

@@ -2,13 +2,17 @@ export default function MovieCard({
     movie,
     selectedMovieId,
     onSelectedMovieId,
+    boxEl,
 }) {
     return (
         <div
             className={`movie-card ${
                 selectedMovieId === movie.imdbID ? 'selected' : ''
             }`}
-            onClick={onSelectedMovieId}
+            onClick={() => {
+                onSelectedMovieId();
+                boxEl.current.style.right = 0;
+            }}
         >
             <img
                 src={movie.Poster}
