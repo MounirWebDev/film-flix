@@ -100,7 +100,7 @@ function App() {
 
     return (
         <>
-            <NavBar search={search} setSearch={setSearch} />
+            <NavBar search={search} setSearch={setSearch} boxEl={boxEl} />
             <Main>
                 <Box>
                     <section className="fetching-movie-box">

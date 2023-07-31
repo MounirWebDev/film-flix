@@ -1,7 +1,6 @@
-import { useState } from 'react';
 import './NavBar.css';
 
-export default function NavBar({search, setSearch}) {
+export default function NavBar({search, setSearch, boxEl}) {
     // useStates Hooks
 
     return (
@@ -14,7 +13,10 @@ export default function NavBar({search, setSearch}) {
                 className="search-bar"
                 placeholder="Search movies..."
                 value={search}
-                onChange={(e) => setSearch(e.target.value)}
+                onChange={(e) => {
+                    setSearch(e.target.value)
+                    boxEl.current.style.right = '-100%';
+                }}
             />
         </nav>
     );
