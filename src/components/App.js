@@ -128,7 +128,7 @@ function App() {
                                         )
                                     }
                                     selectedMovieId={selectedMovieId}
-                                    boxEl = {boxEl}
+                                    boxEl={boxEl}
                                 />
                             ))}
                         {error && <TempError> {error} </TempError>}
@@ -141,33 +141,16 @@ function App() {
                     </button>
                     {selectedMovieId ? (
                         <>
-                            {/* <h2
-                                style={{
-                                    textAlign: 'center',
-                                    margin: '15px 0 ',
-                                    textTransform: 'uppercase',
-                                }}
-                            >
-                                movie details
-                            </h2> */}
                             <MovieDetails
                                 selectedMovieId={selectedMovieId}
                                 onSelectedMovieId={setSelectedMovieId}
                                 onWatchedMovies={setWatchedMovies}
                                 watchedMoives={watchedMovies}
+                                key={crypto.randomUUID()}
                             />
                         </>
                     ) : (
                         <>
-                            {/* <h2
-                                style={{
-                                    textAlign: 'center',
-                                    margin: '15px 0 ',
-                                    textTransform: 'uppercase',
-                                }}
-                            >
-                                favorite movies
-                            </h2> */}
                             <WatchingMoviesList
                                 watchedMovies={watchedMovies}
                                 onDeleteWatchedMovies={
